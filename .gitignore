@@ -1,0 +1,21 @@
+### Windows
+# Windows thumbnail cache files
+Thumbs.db
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows shortcuts
+*.lnk
+.vs
+Binaries
+DerivedDataCache
+
+Content/__ExternalActors__
+Content/__ExternalObjects__
+Saved
+Config
+Intermediate
