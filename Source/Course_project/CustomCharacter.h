@@ -21,11 +21,29 @@ public:
 
 	virtual void ChangeCrouchState();
 
+	virtual void StartSprint();
+	virtual void StopSprint();
+
+	virtual void Tick(float DeltaTime) override;
+
+	virtual bool CanSprint();
+
+	FORCEINLINE bool GetIsSprinting() const { return bIsSprinting; }
+
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Camera")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Controls")
 	float BaseTurnRate = 45.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Camera")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Controls")
 	float BaseLookUpRate = 45.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Movement")
+	float SprintSpeed = 350.f;
+
+	
+
+private:
+	float DefaultMaxMovementSpeed = 150.f;
+	bool bIsSprintRequested = false;
+	bool bIsSprinting = false;
 };

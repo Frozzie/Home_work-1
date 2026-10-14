@@ -19,6 +19,8 @@ void ACustomPlayerController::SetupInputComponent()
 	InputComponent->BindAxis("LookUp", this, &ACustomPlayerController::LookUp);
 	InputComponent->BindAction("Crouch", EInputEvent::IE_Pressed, this, &ACustomPlayerController::ChangeCrouchState);
 	InputComponent->BindAction("Jump", EInputEvent::IE_Pressed, this, &ACustomPlayerController::Jump);
+	InputComponent->BindAction("Sprint", EInputEvent::IE_Pressed, this, &ACustomPlayerController::StartSprint);
+	InputComponent->BindAction("Sprint", EInputEvent::IE_Released, this, &ACustomPlayerController::StopSprint);
 }
 
 void ACustomPlayerController::MoveForward(float Value)
@@ -82,5 +84,21 @@ void ACustomPlayerController::Jump()
 	if (CashedBaseCharacter.IsValid())
 	{
 		CashedBaseCharacter->Jump();
+	}
+}
+
+void ACustomPlayerController::StartSprint()
+{
+	if (CashedBaseCharacter.IsValid())
+	{
+		CashedBaseCharacter->StartSprint();
+	}
+}
+
+void ACustomPlayerController::StopSprint()
+{
+	if (CashedBaseCharacter.IsValid())
+	{
+		CashedBaseCharacter->StopSprint();
 	}
 }

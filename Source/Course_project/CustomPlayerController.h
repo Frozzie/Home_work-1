@@ -31,5 +31,8 @@ private:
 	void ChangeCrouchState();
 	void Jump();
 
+	void StartSprint();
+	void StopSprint();
+
 	TSoftObjectPtr <ACustomCharacter> CashedBaseCharacter;
 };
