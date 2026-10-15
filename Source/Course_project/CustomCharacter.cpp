@@ -21,9 +21,23 @@ bool ACustomCharacter::CanSprint()
 	return true;
 }
 
+void ACustomCharacter::OnSprintStart_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("ACustomCharacter::OnSprintStart_Implementation"))
+}
+
+void ACustomCharacter::OnSprintEnd_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("ACustomCharacter::OnSprintEnd_Implementation"))
+}
+
 void ACustomCharacter::StartSprint()
 {
 	bIsSprintRequested = true;
+	if (bIsCrouched)
+	{
+		UnCrouch();
+	}
 }
 
 void ACustomCharacter::StopSprint()
@@ -39,11 +53,13 @@ void ACustomCharacter::Tick(float DeltaTime)
 		bIsSprinting = true;
 		DefaultMaxMovementSpeed = GetCharacterMovement()->MaxWalkSpeed;
 		GetCharacterMovement()->MaxWalkSpeed = SprintSpeed;
+		OnSprintStart();
 	}
 	else if (!bIsSprintRequested && bIsSprinting)
 	{
 		bIsSprinting = false;
 		GetCharacterMovement()->MaxWalkSpeed = DefaultMaxMovementSpeed;
+		OnSprintEnd();
 	}
 }
 

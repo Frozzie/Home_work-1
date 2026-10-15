@@ -31,6 +31,15 @@ public:
 	FORCEINLINE bool GetIsSprinting() const { return bIsSprinting; }
 
 protected:
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Character | Movement")
+	void OnSprintStart();
+	virtual void OnSprintStart_Implementation();
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Character | Movement")
+	void OnSprintEnd();
+	virtual void OnSprintEnd_Implementation();
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Controls")
 	float BaseTurnRate = 45.f;
 
