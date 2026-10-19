@@ -10,7 +10,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType)
 class COURSE_PROJECT_API ACustomPlayerController : public APlayerController
 {
 	GENERATED_BODY()
@@ -33,6 +33,7 @@ private:
 
 	void StartSprint();
 	void StopSprint();
+	
 
 	TSoftObjectPtr <ACustomCharacter> CashedBaseCharacter;
 };

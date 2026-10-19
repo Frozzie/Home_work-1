@@ -21,7 +21,9 @@ public:
 
 	virtual void ChangeCrouchState();
 
+	UFUNCTION(BlueprintCallable, Category = "Character | Movement")
 	virtual void StartSprint();
+	UFUNCTION(BlueprintCallable, Category = "Character | Movement")
 	virtual void StopSprint();
 
 	virtual void Tick(float DeltaTime) override;
@@ -48,8 +50,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Movement")
 	float SprintSpeed = 350.f;
-
-	
 
 private:
 	float DefaultMaxMovementSpeed = 150.f;

@@ -10,7 +10,7 @@
  * 
  */
 UCLASS(Blueprintable)
-class COURSE_PROJECT_API ACustomPlayerCharacter : public ACustomCharacter
+class COURSE_PROJECT_API ACustomPlayerCharacter : public ACustomCharacter 
 {
 	GENERATED_BODY()
 
