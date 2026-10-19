@@ -51,6 +51,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Movement")
 	float SprintSpeed = 350.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character | Movement")
+	float CurrentStamina = 100.f;
+
 private:
 	float DefaultMaxMovementSpeed = 150.f;
 	bool bIsSprintRequested = false;

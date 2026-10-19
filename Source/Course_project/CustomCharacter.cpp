@@ -54,6 +54,7 @@ void ACustomCharacter::Tick(float DeltaTime)
 		DefaultMaxMovementSpeed = GetCharacterMovement()->MaxWalkSpeed;
 		GetCharacterMovement()->MaxWalkSpeed = SprintSpeed;
 		OnSprintStart();
+		
 	}
 	else if (!bIsSprintRequested && bIsSprinting)
 	{
@@ -61,5 +62,7 @@ void ACustomCharacter::Tick(float DeltaTime)
 		GetCharacterMovement()->MaxWalkSpeed = DefaultMaxMovementSpeed;
 		OnSprintEnd();
 	}
+
+	GEngine->AddOnScreenDebugMessage(1, 1.0f, FColor::Yellow, FString::Printf(TEXT("Stamina: %.2f"), CurrentStamina));
 }
 
