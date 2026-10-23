@@ -17,8 +17,8 @@ void ACustomPlayerController::SetupInputComponent()
 	InputComponent->BindAxis("MoveRight", this, &ACustomPlayerController::MoveRight);
 	InputComponent->BindAxis("Turn", this, &ACustomPlayerController::Turn);
 	InputComponent->BindAxis("LookUp", this, &ACustomPlayerController::LookUp);
-	InputComponent->BindAction("Crouch", EInputEvent::IE_Pressed, this, &ACustomPlayerController::ChangeCrouchState);
 	InputComponent->BindAction("Jump", EInputEvent::IE_Pressed, this, &ACustomPlayerController::Jump);
+	InputComponent->BindAction("Crouch", EInputEvent::IE_Pressed, this, &ACustomPlayerController::ChangeCrouchState);
 	InputComponent->BindAction("Sprint", EInputEvent::IE_Pressed, this, &ACustomPlayerController::StartSprint);
 	InputComponent->BindAction("Sprint", EInputEvent::IE_Released, this, &ACustomPlayerController::StopSprint);
 }
