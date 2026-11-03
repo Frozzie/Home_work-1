@@ -13,10 +13,16 @@ void ACustomPlayerController::SetPawn(APawn* InPawn)
 void ACustomPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
+
 	InputComponent->BindAxis("MoveForward", this, &ACustomPlayerController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &ACustomPlayerController::MoveRight);
 	InputComponent->BindAxis("Turn", this, &ACustomPlayerController::Turn);
 	InputComponent->BindAxis("LookUp", this, &ACustomPlayerController::LookUp);
+
+	InputComponent->BindAxis("SwimForward", this, &ACustomPlayerController::SwimForward);
+	InputComponent->BindAxis("SwimRight", this, &ACustomPlayerController::SwimRight);
+	InputComponent->BindAxis("SwimUp", this, &ACustomPlayerController::SwimUp);
+
 	InputComponent->BindAction("Jump", EInputEvent::IE_Pressed, this, &ACustomPlayerController::Jump);
 	InputComponent->BindAction("Crouch", EInputEvent::IE_Pressed, this, &ACustomPlayerController::ChangeCrouchState);
 	InputComponent->BindAction("Sprint", EInputEvent::IE_Pressed, this, &ACustomPlayerController::StartSprint);
@@ -100,5 +106,29 @@ void ACustomPlayerController::StopSprint()
 	if (CashedBaseCharacter.IsValid())
 	{
 		CashedBaseCharacter->StopSprint();
+	}
+}
+
+void ACustomPlayerController::SwimForward(float Value)
+{
+	if (CashedBaseCharacter.IsValid())
+	{
+		CashedBaseCharacter->SwimForward(Value);
+	}
+}
+
+void ACustomPlayerController::SwimRight(float Value)
+{
+	if (CashedBaseCharacter.IsValid())
+	{
+		CashedBaseCharacter->SwimRight(Value);
+	}
+}
+
+void ACustomPlayerController::SwimUp(float Value)
+{
+	if (CashedBaseCharacter.IsValid())
+	{
+		CashedBaseCharacter->SwimUp(Value);
 	}
 }

@@ -39,6 +39,7 @@
   <Project Path="D:/UE_5/Engine/Platforms/VisionOS/Source/Programs/AutomationTool/VisionOS.Automation.csproj" />
   <Project Path="D:/UE_5/Engine/Source/Programs/AutomationTool/Android/Android.Automation.csproj" />
   <Project Path="D:/UE_5/Engine/Source/Programs/AutomationTool/Apple/Apple.Automation.csproj" />
+  <Project Path="D:/UE_5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj" />
   <Project Path="D:/UE_5/Engine/Source/Programs/AutomationTool/AutomationUtils/AutomationUtils.Automation.csproj" />
   <Project Path="D:/UE_5/Engine/Source/Programs/AutomationTool/BuildGraph/BuildGraph.Automation.csproj" />
   <Project Path="D:/UE_5/Engine/Source/Programs/AutomationTool/CookedEditor/CookedEditor.Automation.csproj" />

@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "CustomCharacter.generated.h"
 
+class AInteractiveActor;
 UCLASS(Abstract, NotBlueprintable)
 class COURSE_PROJECT_API ACustomCharacter : public ACharacter
 {
@@ -28,9 +29,18 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void SwimForward(float Value) {};
+
+	virtual void SwimRight(float Value) {};
+
+	virtual void SwimUp(float Value) {};
+
 	virtual bool CanSprint();
 
-	FORCEINLINE bool GetIsSprinting() const { return bIsSprinting; }
+	FORCEINLINE bool GetIsSprinting() const { return bIsSprinting;}
+
+	void RegisterInteractiveActor(AInteractiveActor* InteractiveActor);
+	void UnregisterInteractiveActor(AInteractiveActor* InteractiveActor);
 
 protected:
 
@@ -58,4 +68,6 @@ private:
 	float DefaultMaxMovementSpeed = 150.f;
 	bool bIsSprintRequested = false;
 	bool bIsSprinting = false;
+
+	TArray<AInteractiveActor*> AvailableInteractiveActors;
 };

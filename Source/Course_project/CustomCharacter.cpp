@@ -21,6 +21,16 @@ bool ACustomCharacter::CanSprint()
 	return true;
 }
 
+void ACustomCharacter::RegisterInteractiveActor(AInteractiveActor* InteractiveActor)
+{
+	AvailableInteractiveActors.Add(InteractiveActor);
+}
+
+void ACustomCharacter::UnregisterInteractiveActor(AInteractiveActor* InteractiveActor)
+{
+	AvailableInteractiveActors.Remove(InteractiveActor);
+}
+
 void ACustomCharacter::OnSprintStart_Implementation()
 {
 	UE_LOG(LogTemp, Warning, TEXT("ACustomCharacter::OnSprintStart_Implementation"))

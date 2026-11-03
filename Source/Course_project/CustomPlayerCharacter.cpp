@@ -2,6 +2,7 @@
 
 
 #include "CustomPlayerCharacter.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 
@@ -16,7 +17,7 @@ ACustomPlayerCharacter::ACustomPlayerCharacter()
 
 void ACustomPlayerCharacter::MoveForward(float Value)
 {
-	if (!FMath::IsNearlyZero(Value, 1e-6f))
+	if (GetCharacterMovement()->IsMovingOnGround() || GetCharacterMovement()->IsFalling() && !FMath::IsNearlyZero(Value, 1e-6f))
 	{
 		AddMovementInput(GetActorForwardVector(), Value);
 	}
@@ -24,7 +25,7 @@ void ACustomPlayerCharacter::MoveForward(float Value)
 
 void ACustomPlayerCharacter::MoveRight(float Value)
 {
-	if (!FMath::IsNearlyZero(Value, 1e-6f))
+	if (GetCharacterMovement()->IsMovingOnGround() || GetCharacterMovement()->IsFalling() && !FMath::IsNearlyZero(Value, 1e-6f))
 	{
 		AddMovementInput(GetActorRightVector(), Value);
 	}
@@ -39,4 +40,31 @@ void ACustomPlayerCharacter::LookUp(float Value)
 {
 	AddControllerPitchInput(Value);
 }
+
+void ACustomPlayerCharacter::SwimForward(float Value)
+{
+	if (GetCharacterMovement()->IsSwimming() && !FMath::IsNearlyZero(Value, 1e-6f))
+	{
+		FRotator PitchYawRotator(GetControlRotation().Pitch, GetControlRotation().Yaw, 0.f);
+		FVector ForwardVector = PitchYawRotator.RotateVector(FVector::ForwardVector);
+		AddMovementInput(ForwardVector, Value);
+	}
+}
+
+void ACustomPlayerCharacter::SwimRight(float Value)
+{
+	if (GetCharacterMovement()->IsSwimming() && !FMath::IsNearlyZero(Value, 1e-6f))
+	{
+		AddMovementInput(GetActorRightVector(), Value);
+	}
+}
+
+void ACustomPlayerCharacter::SwimUp(float Value)
+{
+	if (GetCharacterMovement()->IsSwimming() && !FMath::IsNearlyZero(Value, 1e-6f))
+	{
+		AddMovementInput(FVector::UpVector, Value);
+	}
+}
+
 
