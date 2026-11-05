@@ -2,7 +2,9 @@
 
 
 #include "CustomCharacter.h"
+#include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Components/CapsuleComponent.h"
 
 void ACustomCharacter::ChangeCrouchState()
 {
@@ -39,6 +41,26 @@ void ACustomCharacter::OnSprintStart_Implementation()
 void ACustomCharacter::OnSprintEnd_Implementation()
 {
 	UE_LOG(LogTemp, Warning, TEXT("ACustomCharacter::OnSprintEnd_Implementation"))
+}
+
+void ACustomCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
+{
+	Super::OnMovementModeChanged(PrevMovementMode, PreviousCustomMode);
+
+	// figure out how to change collisions, the method below doesnt work
+
+	//if(GetCharacterMovement()->MovementMode == MOVE_Swimming)
+	//{
+		//Crouch();
+		//CharacterOwner->GetCapsuleComponent()->SetCapsuleSize(SwimmingCapsuleRadius, SwimmingCapsuleHalfHeight);
+	//}
+	//else if (PreviousCustomMode == MOVE_Swimming && GetCharacterMovement()->MovementMode != MOVE_Swimming)
+	//{
+		//UnCrouch();
+		// i tried to make this work, it just doesnt
+		//ACharacter* DefaultCharacter = CharacterOwner->GetClass()->GetDefaultObject<ACharacter>();
+		//CharacterOwner->GetCapsuleComponent()->SetCapsuleSize(DefaultCharacter->GetCapsuleComponent()->GetUnscaledCapsuleRadius(), DefaultCharacter->GetCapsuleComponent()->GetUnscaledCapsuleHalfHeight(), true);
+	//}
 }
 
 void ACustomCharacter::StartSprint()

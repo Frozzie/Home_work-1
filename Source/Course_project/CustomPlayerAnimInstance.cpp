@@ -23,8 +23,11 @@ void UCustomPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	UCharacterMovementComponent* CharacterMovement = CachedPlayerCharacter->GetCharacterMovement();
 
 	Speed = CachedPlayerCharacter->GetVelocity().Size();
+
 	bIsFalling = CharacterMovement->IsFalling();
 	bIsCrouching = CharacterMovement->IsCrouching();
+	bIsSwimming = CharacterMovement->IsSwimming();
 
 	bIsSprinting = CachedPlayerCharacter->GetIsSprinting();
+	
 }

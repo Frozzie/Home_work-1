@@ -52,17 +52,19 @@ protected:
 	void OnSprintEnd();
 	virtual void OnSprintEnd_Implementation();
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Controls")
-	float BaseTurnRate = 45.f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Controls")
-	float BaseLookUpRate = 45.f;
+	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character | Movement")
 	float SprintSpeed = 350.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character | Movement")
 	float CurrentStamina = 100.f;
+
+	UPROPERTY(Category = "Character | Movement | Swimming", EditAnywhere, BlueprintReadWrite, meta = (ClampMin="0.0"))
+	float SwimmingCapsuleRadius = 60.f;
+
+	UPROPERTY(Category = "Character | Movement | Swimming", EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0.0"))
+	float SwimmingCapsuleHalfHeight = 60.f;
 
 private:
 	float DefaultMaxMovementSpeed = 150.f;
